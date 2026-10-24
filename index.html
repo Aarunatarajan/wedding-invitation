@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#A9BDA6">
+  <meta name="description" content="A beautiful interactive wedding invitation.">
+
+  <title>A wedding invitation website </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND DECORATION -->
+
+  <div class="background-decoration" aria-hidden="true">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="glow glow-three"></div>
+  </div>
+
+
+  <!-- BACKGROUND MUSIC -->
+
+  <audio id="backgroundMusic"
+         src="assets/background-music.mp3"
+         loop
+         preload="auto">
+  </audio>
+
+  <button id="musicToggle"
+          class="music-toggle"
+          type="button"
+          aria-label="Play background music"
+          aria-pressed="false">
+    <span aria-hidden="true">♫</span>
+    <span id="musicLabel">Play Music</span>
+  </button>
+
+  <main>
+
+    <!-- 1. RIBBON OPENING -->
+
+    <section id="ribbonOpening"
+             class="scene ribbon-scene">
+ 
+      <div class="glass-card ribbon-card">
+      
+        <button id="ribbonStart"
+                class="ribbon-image-button"
+                type="button"
+                aria-label="Touch the ribbon to open the invitation">
+
+          <img
+            src="assets/ribbon-opening.jpg"
+            alt="Wedding invitation ribbon"
+            class="ribbon-image">
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- 2. TEMPLE DOOR + KJ SYMBOL -->
+
+    <section id="doorScene"
+             class="scene door-scene">
+
+      <div class="glass-card door-card">
+
+        <div class="door-stage">
+
+          <div class="door-frame">
+
+            <img
+              src="assets/door-interior.jpg"
+              alt="Traditional wedding temple doorway"
+              class="door-interior">
+
+            <div class="door-panel door-left"
+                 aria-hidden="true">
+            </div>
+
+            <div class="door-panel door-right"
+                 aria-hidden="true">
+            </div>
+
+            <div class="kj-reveal"
+                 aria-label="KJ wedding monogram">
+
+              <span class="kj-monogram">Welcome</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 3. BRIDE + GROOM DRAG INTERACTION -->
+
+    <section id="coupleScene"
+             class="scene couple-scene">
+
+      <div class="glass-card couple-card">
+
+        <div class="section-heading">
+          <p class="eyebrow">Two Hearts, One Journey <br>(unga fingers use panni groom and bride ah close ahh kondu vaanga)
+          </br>
+          </p></br></p>
+        </div>
+
+        <div id="coupleStage"
+             class="couple-stage">
+
+          <div class="couple-person bride-person"
+               id="bridePerson">
+
+            <img
+              src="assets/bride-standing.png"
+              alt="Bride standing"
+              id="brideImage"
+              class="couple-person-image"
+              draggable="false">
+
+          </div>
+
+          <div class="couple-person groom-person"
+               id="groomPerson">
+
+            <img
+              src="assets/groom-standing.png"
+              alt="Groom standing"
+              id="groomImage"
+              class="couple-person-image"
+              draggable="false">
+
+          </div>
+
+          <div id="heartEffect"
+               class="heart-effect"
+               aria-hidden="true">
+            ♥
+          </div>
+
+       
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 4. COUPLE LIFT IMAGE + ROMANTIC SLOGAN -->
+
+    <section id="liftScene"
+             class="scene lift-scene">
+
+      <div class="glass-card lift-card">
+
+        <div class="lift-image-wrapper">
+
+          <img
+            src="assets/couple-lift.png"
+            alt="Bride and groom celebrating together"
+            class="lift-image"
+            id="liftImage">
+
+        </div>
+
+        <p class="lift-slogan">
+          Together is a beautiful place to be. K♥J
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- 5. SCRATCH TO REVEAL THE NAMES -->
+
+    <section id="nameRevealScene"
+             class="scene name-reveal-scene">
+
+      <div class="glass-card name-reveal-card">
+
+        <p class="eyebrow">A New Chapter Begins</p>
+
+        <h2 class="scratch-heading">
+          A Love Story Written in the Stars
+        </h2>
+
+        <div id="scratchArea"
+             class="scratch-area">
+
+          <div id="namesReveal"
+               class="names-reveal">
+
+            <p class="name-label">The Bride</p>
+
+            <h2 id="brideName"
+                class="revealed-name">
+              A. Kalaivani
+            </h2>
+
+            <div class="name-divider" aria-hidden="true">
+              <span>♥</span>
+            </div>
+
+            <p class="name-label">The Groom</p>
+
+            <h2 id="groomName"
+                class="revealed-name">
+              M. Jothimani
+            </h2>
+
+          </div>
+
+          <canvas id="scratchCanvas"
+                  class="scratch-canvas"
+                  aria-label="Scratch with your finger to reveal the bride and groom names">
+          </canvas>
+
+        </div>
+
+        <p id="scratchHint" class="scratch-hint">
+          just scratch pannunga 
+        </p>
+
+        <div id="nameCelebration"
+             class="name-celebration"
+             aria-hidden="true">
+
+          <div class="rose-petals petals-one">🌹</div>
+          <div class="rose-petals petals-two">🌸</div>
+          <div class="rose-petals petals-three">🌹</div>
+          <div class="rose-petals petals-four">🌸</div>
+          <div class="rose-petals petals-five">🌹</div>
+          <div class="rose-petals petals-six">🌸</div>
+
+          <div class="celebration-sparkle sparkle-one">✦</div>
+          <div class="celebration-sparkle sparkle-two">✧</div>
+          <div class="celebration-sparkle sparkle-three">✦</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 6. GIFT BOX + TWO RINGS -->
+
+    <section id="giftScene"
+             class="scene gift-scene">
+
+      <div class="glass-card gift-card">
+
+        <p class="eyebrow">A Little Surprise (touch the gift box)</p>
+
+        <button id="giftOpen"
+                class="gift-open-button"
+                type="button"
+                aria-label="Open the wedding gift"
+                aria-expanded="false">
+
+          <img
+            src="assets/gift-box.jpg"
+            alt="Wedding gift box"
+            class="gift-box-image">
+
+        </button>
+
+        <div id="giftReveal"
+             class="gift-reveal">
+
+          <div class="ring-stage"
+               aria-label="Two wedding rings">
+
+            <div class="wedding-ring ring-one">
+              <span class="ring-gem"></span>
+            </div>
+
+            <div class="wedding-ring ring-two">
+              <span class="ring-gem"></span>
+            </div>
+
+          </div>
+
+          <p class="gift-reveal-message">
+            Two hearts, one beautiful forever.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 7. SAVE THE DATE + COUNTDOWN -->
+
+    <section id="dateScene"
+             class="scene date-scene">
+
+      <div class="glass-card date-card">
+
+        <p class="eyebrow">Save the Date</p>
+
+        <div class="date-heart" aria-hidden="true">♥</div>
+
+        <h2 class="date-title">
+          Together Begins Forever
+        </h2>
+
+        <p id="weddingDateText" class="wedding-date-text">
+          Sunday, 25 October 2026
+        </p>
+
+        <p id="weddingTimeText" class="wedding-time-text">
+          Wedding Time
+        </p>
+
+        <div class="countdown-container">
+
+          <div class="countdown-item">
+            <span id="countDays" class="countdown-number">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="countHours" class="countdown-number">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="countMinutes" class="countdown-number">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="countSeconds" class="countdown-number">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 8. WEDDING VENUE -->
+
+    <section id="venueScene"
+             class="scene venue-scene">
+
+      <div class="glass-card venue-card">
+
+        <p class="eyebrow">With Divine Blessings</p>
+
+        <h2 class="venue-title">
+          The Wedding Venue
+        </h2>
+
+        <div class="venue-symbol" aria-hidden="true">❋</div>
+
+        <h3 id="venueName" class="venue-name">
+          Sri Balamurugan Mahal
+        </h3>
+
+        <p id="venueAddress" class="venue-address">
+          Palani, Tamil Nadu, India
+        </p>
+
+        <div class="venue-details">
+
+          <p>
+            <span class="detail-label">Date</span>
+            <span id="venueDateDetail">Sunday, 25 October 2026</span>
+          </p>
+
+          <p>
+            <span class="detail-label">Time</span>
+            <span id="venueTimeDetail">Wedding Time</span>
+          </p>
+
+        </div>
+
+        <a id="mapLink"
+           class="map-link"
+           href="https://www.google.com/maps/search/?api=1&query=Sri+Balamurugan+Mahal+Palani+Tamil+Nadu"
+           target="_blank"
+           rel="noopener noreferrer">
+
+          <span aria-hidden="true">⌖</span>
+          Open Location in Maps
+
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- 9. SPECIAL PLACES IN PALANI -->
+
+    <section id="palaniScene"
+             class="scene palani-scene">
+
+      <div class="glass-card palani-card">
+
+        <p class="eyebrow">A Sacred Destination</p>
+
+        <h2 class="palani-title">
+          The Beauty of Palani
+        </h2>
+
+        <p class="palani-description">
+          A special place filled with devotion, blessings
+          and beautiful memories.
+        </p>
+
+        <div class="palani-gallery">
+
+          <figure class="palani-gallery-item">
+            <img
+              src="assets/palani-place-1.jpg"
+              alt="Palani place one"
+              loading="lazy">
+          </figure>
+
+          <figure class="palani-gallery-item">
+            <img
+              src="assets/palani-place-2.jpg"
+              alt="Palani place two"
+              loading="lazy">
+          </figure>
+
+          <figure class="palani-gallery-item">
+            <img
+              src="assets/palani-place-3.jpg"
+              alt="Palani place three"
+              loading="lazy">
+          </figure>
+
+          <figure class="palani-gallery-item">
+            <img
+              src="assets/palani-place-4.jpg"
+              alt="Palani place four"
+              loading="lazy">
+          </figure>
+
+          <figure class="palani-gallery-item">
+            <img
+              src="assets/palani-place-5.jpg"
+              alt="Palani place five"
+              loading="lazy">
+          </figure>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 10. ENVELOPE + INVITATION CARD -->
+
+    <section id="invitationScene"
+             class="scene invitation-scene">
+
+      <div class="glass-card invitation-card">
+
+        <p class="eyebrow">A Personal Invitation <br>just touch the card</br></p>
+
+        <h2 class="invitation-title">
+          With Love, We Invite You
+        </h2>
+
+        <button id="envelopeOpen"
+                class="envelope-open-button"
+                type="button"
+                aria-label="Open the wedding invitation"
+                aria-expanded="false">
+
+          <img
+            src="assets/envelope.jpg"
+            alt="Wedding invitation envelope"
+            class="envelope-image"
+            loading="lazy">
+
+        </button>
+
+        <div id="invitationReveal"
+             class="invitation-reveal">
+
+          <img
+            src="assets/invitation-card.jpg"
+            alt="Wedding invitation card"
+            class="invitation-image"
+            loading="lazy">
+
+          <button id="downloadInvitation"
+                  class="download-invitation-button"
+                  type="button">
+
+            Download Invitation
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 11. GUEST WISHES -->
+
+    <section id="wishesScene"
+             class="scene wishes-scene">
+
+      <div class="glass-card wishes-card">
+
+        <p class="eyebrow">Your Blessings Mean Everything</p>
+
+        <h2 class="wishes-title">
+          Leave Your Wishes
+        </h2>
+
+        <p class="wishes-description">
+          Share your love and blessings with the couple.
+        </p>
+
+        <form id="wishesForm" class="wishes-form">
+
+          <label for="guestName">
+            Your Name
+          </label>
+
+          <input
+            type="text"
+            id="guestName"
+            name="guestName"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required>
+
+          <label for="guestMessage">
+            Your Wishes
+          </label>
+
+          <textarea
+            id="guestMessage"
+            name="guestMessage"
+            rows="4"
+            placeholder="Write your wishes here..."
+            required></textarea>
+
+          <button id="sendWishes"
+                  class="send-wishes-button"
+                  type="submit">
+
+            Send Wishes via WhatsApp
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- 12. BEFORE-MARRIAGE VIDEO -->
+
+    <section id="beforeMarriageScene"
+             class="scene video-scene">
+
+      <div class="glass-card video-card">
+
+        <p class="eyebrow">Memories Before Forever</p>
+
+        <h2 class="video-title">
+          Before Marriage
+        </h2>
+
+        <p class="video-audio-notice">
+          ♫ ♫ For the best experience, music icon side la irukkum off panittu paarunga aprom on pannikkonga
+        </p>
+
+        <video
+          id="beforeMarriageVideo"
+          class="wedding-video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/final-couple.png">
+
+          <source
+            src="assets/before-marriage.mp4"
+            type="video/mp4">
+
+          Your browser does not support video playback.
+
+        </video>
+
+      </div>
+
+    </section>
+
+    <!-- 13. AFTER-MARRIAGE VIDEO -->
+
+    <section id="afterMarriageScene"
+             class="scene video-scene">
+
+      <div class="glass-card video-card">
+
+        <p class="eyebrow">A Beautiful Forever</p>
+
+        <h2 class="video-title">
+          After Marriage
+        </h2>
+
+        <p class="video-audio-notice">
+          ♫ For the best experience, music icon side la irukkum off panittu paarunga aprom on pannikonga
+        </p>
+
+        <video
+          id="afterMarriageVideo"
+          class="wedding-video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/final-couple.png">
+
+          <source
+            src="assets/after-marriage.mp4"
+            type="video/mp4">
+
+          Your browser does not support video playback.
+
+        </video>
+
+      </div>
+
+    </section>
+
+    <!-- 14. THANK YOU -->
+
+    <section id="thankYouScene"
+             class="scene thank-you-scene">
+
+      <div class="glass-card thank-you-card">
+
+        <div class="thank-you-heart" aria-hidden="true">♥</div>
+
+        <h2 class="thank-you-title">
+          Thank You
+        </h2>
+
+        <p class="thank-you-message">
+          Thank you for being a part of our happiness
+          and blessing our new beginning.
+        </p>
+
+        <p class="thank-you-blessing">
+          With love and gratitude.
+        </p>
+
+      
+
+      </div>
+
+    </section>
+
+    <!-- 15. FINAL SCREEN -->
+
+    <section id="creatorScene"
+             class="scene creator-scene">
+
+      <div class="glass-card creator-card">
+
+        <div class="creator-sparkles" aria-hidden="true">
+          <span>✦</span>
+          <span>✧</span>
+          <span>✦</span>
+          <span>✧</span>
+          <span>✦</span>
+        </div>
+
+        <div class="creator-crown" aria-hidden="true">♛</div>
+
+        <h2 class="creator-title">
+          Aaru’s Creation
+        </h2>
+
+        <button id="replayInvitation"
+                class="replay-button"
+                type="button">
+
+          ↻ Replay
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="site-footer">
+    <p>Made with love ♡</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
